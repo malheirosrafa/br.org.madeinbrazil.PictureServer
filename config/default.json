@@ -1,0 +1,37 @@
+{
+  "server": {
+    "port": 8080,
+    "cluster": true
+  },
+  "db": {
+    "host": "mongodb://localhost/picture-server"
+  },
+  "pictureTemplates" : {
+    "capa": {
+      "formats": {
+        "large.jpg": {
+          "width":1280, "quality": 80
+        },
+        "medium.jpg": {
+          "width":640, "quality": 60
+        },
+        "small.jpg": {
+          "width":320, "quality": 60
+        },
+        "thumb.jpg": {
+          "width":150, "height":150, "quality": 80, "crop":"true", "gravity":"Center", "options":"^"
+        }
+      }
+    },
+    "foto": {
+      "formats": {
+        "normal.jpg": {
+          "width":640, "quality": 60
+        },
+        "thumb.jpg": {
+          "width":150, "height":150, "quality": 80, "crop":"true", "gravity":"Center", "options":"^"
+        }
+      }
+    }
+  }
+}

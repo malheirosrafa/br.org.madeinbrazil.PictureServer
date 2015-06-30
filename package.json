@@ -1,0 +1,38 @@
+{
+  "name": "MadeInBrazil.PictureServer",
+  "version": "0.0.1",
+  "description": "Microservice for store, manipulate and serve images, based on Node.js, RabbitMQ and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha test",
+    "start": "node bootstrap.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:malheirosrafa/org.madeinbrazil.picture-server.git"
+  },
+  "keywords": [
+    "picture",
+    "manager",
+    "server",
+    "microservice"
+  ],
+  "author": "Rafael da Silva Malheiros",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malheirosrafa/org.madeinbrazil.picture-server/issues"
+  },
+  "homepage": "https://github.com/malheirosrafa/org.madeinbrazil.picture-server",
+  "dependencies": {
+    "bunyan": "^1.4.0",
+    "config": "^1.14.0",
+    "gm": "^1.18.1",
+    "mongoose": "^4.0.6",
+    "restify": "^3.0.3"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.4"
+  }
+}
