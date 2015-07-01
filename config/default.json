@@ -10,26 +10,23 @@
     "capa": {
       "formats": {
         "large.jpg": {
-          "width":1280, "quality": 80
+          "width":1280, "quality": 40
         },
         "medium.jpg": {
-          "width":640, "quality": 60
+          "width":640, "quality": 50
         },
         "small.jpg": {
-          "width":320, "quality": 60
-        },
-        "thumb.jpg": {
-          "width":150, "height":150, "quality": 80, "crop":"true", "gravity":"Center", "options":"^"
+          "width":320, "quality": 50
         }
       }
     },
     "foto": {
       "formats": {
         "normal.jpg": {
-          "width":640, "quality": 60
+          "width":640, "quality": 70
         },
         "thumb.jpg": {
-          "width":150, "height":150, "quality": 80, "crop":"true", "gravity":"Center", "options":"^"
+          "width":150, "height":150, "quality": 50, "crop":"true", "gravity":"Center", "options":"^"
         }
       }
     }

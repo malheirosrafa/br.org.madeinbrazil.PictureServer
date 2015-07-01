@@ -51,7 +51,7 @@ exports.get = function get(req, res, next) {
       return next(new restify.NotFoundError());
   }
 }
-
+  
 
 exports.create = function create(req, res, next) {
   //console.log(req.files.picture);
