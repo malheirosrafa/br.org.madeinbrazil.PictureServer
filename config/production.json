@@ -1,5 +1,5 @@
 {
   "db": {
-    "host": "mongodb://172.168.2.1/picture-server"
+    "host": "mongodb://localhost/picture-server"
   }
 }
