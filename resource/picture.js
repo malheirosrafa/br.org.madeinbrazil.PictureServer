@@ -106,7 +106,7 @@
     };
 
     var onPictureFileReady = function onPictureFileReady(error, data) {
-      error = error || 'aqui';
+      error = 'aqui';
       if (error) return next(new restify.InternalServerError(error));
 
       pictureData = data;
@@ -115,7 +115,7 @@
     };
 
     var onPictureDocumentFound = function onPictureDocumentFound(error, picture) {
-      error = error || 'ali';
+      error = 'ali';
       if (error) return next(new restify.InternalServerError(error));
       if (!picture) return next(new restify.NotFoundError());
 
