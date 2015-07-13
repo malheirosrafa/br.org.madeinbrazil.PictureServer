@@ -129,7 +129,7 @@
       Picture.findById(pictureId, onPictureDocumentFound);
       fs.readFile(req.files.picture.path, onPictureFileReady);
     } catch (e) {
-      return next(new restify.NotFoundError());
+      return next(new restify.NotFoundError('ndjsad'));
     }
   };
 
