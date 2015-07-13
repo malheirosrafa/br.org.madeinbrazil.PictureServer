@@ -71,7 +71,11 @@
       });
       pic.save();
 
-      res.send();
+      var picCreated = {
+        id: pic._id
+      };
+
+      res.send(picCreated);
       next();
     });
   };
@@ -93,6 +97,12 @@
 
         pictureDocument.data = pictureData;
         pictureDocument.save();
+
+        var picUpdated = {
+          id: pictureDocument._id
+        };
+
+        res.send(picUpdated);
     };
 
     var onPictureFileReady = function onPictureFileReady(error, data) {
@@ -121,8 +131,6 @@
     } catch (e) {
       return next(new restify.NotFoundError());
     }
-
-    next();
   };
 
 }());
