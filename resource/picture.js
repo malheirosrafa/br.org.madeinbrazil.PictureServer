@@ -91,7 +91,7 @@
 
 
     var updatePictureData = function updatePictureData() {
-      if(!pictureFileReady || !pictureDataReady)
+      if(!pictureDataReady || !pictureDataReady)
         return;
 
         pictureDocument.data = pictureData;
@@ -102,14 +102,15 @@
         };
 
         res.send(picUpdated);
+        next();
     };
 
     var onPictureFileReady = function onPictureFileReady(error, data) {
-      error = 'aqui';
+      //error = 'aqui';
       if (error) return next(new restify.InternalServerError(error));
 
       pictureData = data;
-      pictureFileReady = true;
+      pictureDataReady = true;
       updatePictureData();
     };
 
