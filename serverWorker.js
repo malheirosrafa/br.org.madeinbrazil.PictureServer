@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  var config    = require('config'),
-    restify     = require('restify'),
-    mongoose    = require("mongoose"),
-    packageJson = require('./package.json');
-
+  var config          = require('config');
+  var restify         = require('restify');
+  var mongoose        = require("mongoose");
+  var packageJson     = require('./package.json');
   var pictureResource = require('./resource/picture.js');
 
   var dbConfig = config.get('db');
+
   /*
    * Set up server
    * @return the created server

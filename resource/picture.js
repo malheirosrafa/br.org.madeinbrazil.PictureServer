@@ -1,12 +1,11 @@
 (function() {
   'use strict';
 
-  var fs = require('fs'),
-    gm = require('gm'),
-    config = require('config'),
-    restify = require('restify'),
-    Picture = require('../model/picture');
-
+  var fs      = require('fs');
+  var gm      = require('gm');
+  var config  = require('config');
+  var restify = require('restify');
+  var Picture = require('../model/picture');
 
   var picturesConfig = config.get('pictureTemplates');
 
@@ -115,7 +114,7 @@
     };
 
     var onPictureDocumentFound = function onPictureDocumentFound(error, picture) {
-      error = 'ali';
+
       if (error) return next(new restify.InternalServerError(error));
       if (!picture) return next(new restify.NotFoundError());
 
