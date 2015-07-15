@@ -1,10 +1,11 @@
 'use strict';
 
-var fs = require('fs')
-  , gm = require('gm')
+var fs      = require('fs')
+  , gm      = require('gm')
   , config  = require('config')
   , restify = require('restify')
   , Picture = require('../model/picture')
+  ;
 
 
 var picturesConfig = config.get('pictureTemplates')
@@ -12,14 +13,17 @@ var picturesConfig = config.get('pictureTemplates')
 
 exports.get = function get(req, res, next) {
 
-  var pictureFormat  = req.params.formatName
-    , pictureId = req.params.pictureId
+  var pictureFormat = req.params.formatName
+    , pictureId     = req.params.pictureId
+    ;
 
   var onPictureBufferReady = function onPictureBufferReady (error, buffer) {
+
     if (error) return next(new restify.InternalServerError(error));
 
     res.writeHead(200, {'Content-Type': 'image/jpg' });
     res.end(buffer, 'binary');
+
     return next();
   }
 
@@ -33,7 +37,7 @@ exports.get = function get(req, res, next) {
     if(!cfg) return next(new restify.BadRequestError('%s is not a valid format', pictureFormat));
 
     var img = gm(picture.data, pictureId)
-          .resize(cfg.width, cfg.height, cfg.options);
+              .resize(cfg.width, cfg.height, cfg.options);
 
     if(cfg.crop)
       img.gravity(cfg.gravity)
@@ -51,7 +55,6 @@ exports.get = function get(req, res, next) {
       return next(new restify.NotFoundError());
   }
 }
-  
 
 exports.create = function create(req, res, next) {
   //console.log(req.files.picture);
@@ -62,8 +65,8 @@ exports.create = function create(req, res, next) {
 
     var pic = new Picture({template: req.params.template, data: data});
     pic.save();
-
     res.send();
     next();
+
   });
 }

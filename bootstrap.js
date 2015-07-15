@@ -1,11 +1,12 @@
 'use strict';
 
-var cluster = require('cluster')
-  , config = require('config')
-  , logging = require('./logging')
+var cluster      = require('cluster')
+  , config       = require('config')
+  , logging      = require('./logging')
   , serverWorker = require('./serverWorker')
+  , serverConfig = config.get('server')
+  ;
 
-var serverConfig = config.get('server');
 
 function spawnWorker (logger) {
   // create servers
@@ -22,9 +23,9 @@ function createCluster (logger) {
 
   // Set up cluster and start servers
   if (cluster.isMaster) {
-    var numCpus = require('os').cpus().length;
 
-    logger.info('Starting master, pid ' + process.pid + ', spawning ' + numCpus + ' workers');
+    var numCpus = require('os').cpus().length;
+    logger.info('Starting master, pid %s, spawning %s workers',process.pid,numCpus);
 
     // fork workers
     for (var i = 0; i < numCpus; i++) {
@@ -32,12 +33,12 @@ function createCluster (logger) {
     }
 
     cluster.on('listening', function (worker) {
-      logger.info('Worker ' + worker.id + ' started');
+      logger.info('Worker %s started',worker.id);
     });
 
     // if a worker dies, respawn
     cluster.on('death', function (worker) {
-      logger.warn('Worker ' + worker.id + ' died, restarting...');
+      logger.warn('Worker %s died, restarting...',worker.id);
       cluster.fork();
     });
 
@@ -49,7 +50,6 @@ function createCluster (logger) {
 }
 
 function run () {
-
   // Set up logging
   var logger = logging.createLogger();
 

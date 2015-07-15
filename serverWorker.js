@@ -1,9 +1,10 @@
 'use strict';
 
-var config   = require('config')
-  , restify  = require('restify')
-  , mongoose = require("mongoose")
+var config      = require('config')
+  , restify     = require('restify')
+  , mongoose    = require("mongoose")
   , packageJson = require('./package.json')
+  ;
 
 var pictureResource = require('./resource/picture.js');
 
@@ -15,9 +16,9 @@ var dbConfig = config.get('db');
 exports.spawn = function spawn (logger) {
 
   var server = restify.createServer({
-    name: packageJson.name,
-    version: packageJson.version
-  });
+                  name: packageJson.name
+                , version: packageJson.version
+              });
 
   server.use(restify.bodyParser());
   server.use(restify.gzipResponse());
