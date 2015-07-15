@@ -133,4 +133,23 @@
     }
   };
 
+  exports.remove = function remove(req, res, next) {
+      var pictureId = req.params.pictureId;
+
+      var onPictureDocumentRemoved = function onPictureDocumentRemoved(error, picture) {
+        if (error) return next(new restify.InternalServerError(error));
+        
+        res.send();
+        return next();
+      };
+
+
+      try {
+        Picture.findByIdAndRemove({_id: pictureId}, onPictureDocumentRemoved);
+      } catch (e) {
+        return next(new restify.NotFoundError());
+      }
+  };
+
+
 }());

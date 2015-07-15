@@ -36,6 +36,7 @@
     server.get('/:pictureId/:formatName', pictureResource.get);
     server.post('/:template', pictureResource.create);
     server.patch('/:pictureId', pictureResource.update);
+    server.del('/:pictureId', pictureResource.remove);
 
     mongoose.connect(dbConfig.host, function(error) {
       if (error)
