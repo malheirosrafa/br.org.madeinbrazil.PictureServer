@@ -29,7 +29,7 @@
           "width":150, "height":150, "quality": 50, "crop":"true", "gravity":"Center", "options":"^"
         }
       }
-    }
+    },
     "promo": {
       "formats": {
         "normal.jpg": {
