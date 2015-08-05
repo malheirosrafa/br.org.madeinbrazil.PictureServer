@@ -30,5 +30,12 @@
         }
       }
     }
+    "promo": {
+      "formats": {
+        "normal.jpg": {
+          "width":640, "quality": 70
+        }
+      }
+    }
   }
 }
