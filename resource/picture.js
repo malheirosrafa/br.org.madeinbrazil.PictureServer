@@ -103,6 +103,30 @@
 
         res.send(picUpdated);
         next();
+	
+	/*
+   	 * Codigo-fonte retirado de https://www.rabbitmq.com/tutorials/tutorial-three-javascript.html
+    	 * com algumas adaptacoes
+     	 */
+	
+	//Envia o id da imagem para o servidor RabbitMQ
+	var amqp = require('amqplib/callback_api');
+
+        amqp.connect('amqp://mqadmin:EmbelezApp2015@queue.embelezapp.com.br', function(err, conn) {
+            conn.createChannel(function(err, ch) {
+		var ex = 'exchange';		
+		var msg = pictureId;		
+
+		ch.assertExchange(ex, 'fanout', {durable: false});		
+		ch.publish(ex, '', new Buffer(msg));
+                
+                console.log(" [x] Sent "+msg);
+            });
+
+            setTimeout(function() { conn.close(); process.exit(0) }, 500);
+        });
+	/**********************************************************************************************/	
+
     };
 
     var onPictureFileReady = function onPictureFileReady(error, data) {
